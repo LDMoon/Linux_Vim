@@ -34,6 +34,9 @@ call plug#end()
 " Tab is broken into 4 space characters 
 :set expandtab
 
+" Backspace will delete 4 spaces at once.
+:set softtabstop=4
+
 " Create a grey column at 80 chars
 :set colorcolumn=81
 
