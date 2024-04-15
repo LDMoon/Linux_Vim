@@ -64,3 +64,5 @@ syntax on
 " Aliases
 " This opens a terminal in a new tab quickly.
 :command TT wa | tab terminal
+
+# Test 2
