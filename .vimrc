@@ -65,4 +65,5 @@ syntax on
 " This opens a terminal in a new tab quickly.
 :command TT wa | tab terminal
 
-# Test 2
+# Test 2 3
+
