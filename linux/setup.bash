@@ -107,7 +107,7 @@ function change_to_p10k() {
 	echo "$PREFIX $ZSHRC exists."
 
 	# Change the theme to p10k
-	sed -i 's/ZSH_THEME=".*"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
+	sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 	echo "$PREFIX Changed theme to Powerlevel10k."
 }
 
