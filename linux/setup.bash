@@ -1,6 +1,6 @@
 #! /bin/bash
 
-# Author: Lorenzo D Moon
+# Author: Lorenzo D. Moon
 # Purpose: This script installs and sets up everything for a linux terminal
 # environment.
 # Installs:
@@ -55,7 +55,6 @@ update_upgrade "43200"
 apt_install "git"
 apt_install "ripgrep"
 apt_install "neovim" "nvim"
-no | apt_install "zsh"
 apt_install "tmux"
 apt_install "lua5.4"
 apt_install "python3"
@@ -66,14 +65,20 @@ apt_install "gcc"
 apt_install "make"
 apt_install "valgrind"
 apt_install "gdb"
+apt_install "zsh"
 
-# Install oh my zsh
-if [ -d "$HOME/.oh-my-zsh" ]; then
-	echo "$PREFIX Oh My Zsh is already installed."
+echo "$PREFIX Installing tmux plugin manager..."
+if [ -d "$HOME/.tmux/plugins/tpm" ]; then
+	echo "$PREFIX Tmux plugin manager is already installed."
 else
-	echo "$PREFIX Installing Oh My Zsh..."
-	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
+
+# Setting up tmux config and tmux plugin manager
+# This will overwrite the existing tmux config
+# Uncomment battery for laptop setups
+echo "$PREFIX Setting up tmux config..."
+cat ./tmux.conf >~/.tmux.conf
 
 # Get P10K theme for zsh
 if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
@@ -83,27 +88,11 @@ else
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
-# Set the p10k Settings
-echo "$PREFIX Setting up Powerlevel10k theme..."
-echo "$PREFIX Use p10k configure if you don't like it"
-cat ./p10k.zsh >~/.p10k.zsh
-
-echo "$PREFIX Installing tmux plugin manager..."
-if [ -d "$HOME/.tmux/plugins/tpm" ]; then
-	echo "$PREFIX Tmux plugin manager is already installed."
+# Install oh my zsh
+if [ -d "$HOME/.oh-my-zsh" ]; then
+	echo "$PREFIX Oh My Zsh is already installed."
 else
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	echo "$PREFIX Installing Oh My Zsh..."
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-function change_to_p10k() {
-	# Change the theme to p10k
-	sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
-	echo "$PREFIX Changed theme to Powerlevel10k."
-}
-
-change_to_p10k
-
-# Setting up tmux config and tmux plugin manager
-# This will overwrite the existing tmux config
-echo "$PREFIX Setting up tmux config..."
-cat ./tmux.conf >~/.tmux.conf
