@@ -54,7 +54,7 @@ function update_upgrade() {
 update_upgrade "43200"
 apt_install "git"
 apt_install "ripgrep"
-apt_install "neovim" "nvim"
+#apt_install "neovim" "nvim" # Moved to nvim to build binaries
 apt_install "tmux"
 apt_install "lua5.4"
 apt_install "python3"
@@ -65,7 +65,10 @@ apt_install "gcc"
 apt_install "make"
 apt_install "valgrind"
 apt_install "gdb"
+apt_install "npm"
+apt_install "nodejs"
 apt_install "zsh"
+
 
 echo "$PREFIX Installing tmux plugin manager..."
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
