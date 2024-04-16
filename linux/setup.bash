@@ -96,17 +96,6 @@ else
 fi
 
 function change_to_p10k() {
-	# Define the path to the file you are waiting for
-	ZSHRC="~/.zshrc"
-
-	# Loop until the file exists
-	while [ ! -f "$ZSHRC" ]; do
-		echo "$PREFIX Waiting for $ZSHRC to exist..."
-		sleep 5 # Wait for 5 seconds before checking again
-	done
-
-	echo "$PREFIX $ZSHRC exists."
-
 	# Change the theme to p10k
 	sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 	echo "$PREFIX Changed theme to Powerlevel10k."
