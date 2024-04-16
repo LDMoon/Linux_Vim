@@ -80,6 +80,7 @@ if [ -d "$HOME/.oh-my-zsh/custom/themes/powerlevel10k" ]; then
 	echo "$PREFIX Powerlevel10k theme is already installed."
 else
 	echo "$PREFIX Installing Powerlevel10k theme..."
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
 # Set the p10k Settings
@@ -110,6 +111,8 @@ function change_to_p10k() {
 	sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="powerlevel10k\/powerlevel10k"/' ~/.zshrc
 	echo "$PREFIX Changed theme to Powerlevel10k."
 }
+
+change_to_p10k
 
 # Setting up tmux config and tmux plugin manager
 # This will overwrite the existing tmux config
