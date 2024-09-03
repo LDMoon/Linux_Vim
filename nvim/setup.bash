@@ -2,8 +2,8 @@
 
 # Author: Lorenzo D. Moon
 
-echo "Copying config files to ~/.config/..."
-cp -r ./config/ ~/.config/
+#echo "Copying config files to ~/.config/..."
+#cp -r ./config/ ~/.config/
 
 
 if [ -x "$(command -v "nvim")" ]; then
